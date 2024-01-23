@@ -1,54 +1,131 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
 <?import javafx.geometry.*?>
-<?import javafx.geometry.Insets?>
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
-<?import javafx.scene.text.Font?>
 
-<BorderPane id="loginScreen" prefHeight="553.0" prefWidth="523.0" styleClass="loginBorderPaneStyle" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="io.mosip.registration.controller.auth.LoginController">
+<BorderPane id="loginScreen" prefHeight="639.0" prefWidth="990.0" styleClass="loginBorderPaneStyle" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.mosip.registration.controller.auth.LoginController">
   <bottom>
-    <HBox id="footer-section">
+    <HBox id="footer-section" alignment="CENTER" prefHeight="20.0" prefWidth="808.0" stylesheets="@../application.css">
       <children>
-        <Label text="%mosip.io" />
+        <Label alignment="CENTER" style="-fx-text-fill: white;" text="%mosip.io" textFill="#034b64">
+          <font>
+            <Font size="14.0" />
+          </font></Label>
         <Label text="  " />
-        <Label text="%regClientVersion" />
-        <Label text=" : " />
-        <Label fx:id="versionValueLabel" />
+        <Label alignment="CENTER" style="-fx-text-fill: white;" text="%regClientVersion" textFill="#034b64">
+          <font>
+            <Font size="14.0" />
+          </font></Label>
+<!--        <Label style="-fx-text-fill: white;" text=" : " />-->
+        <Label fx:id="versionValueLabel" prefHeight="27.0" prefWidth="153.0" textFill="#034b64" />
       </children>
     </HBox>
   </bottom>
+
   <right>
-    <AnchorPane fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="489.0">
+<!--    <AnchorPane fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="489.0">-->
+    <AnchorPane fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="472.0" prefWidth="635.0" BorderPane.alignment="CENTER">
+
+    <children>
+<!--        <AnchorPane fx:id="userIdPane" layoutX="37.0" layoutY="188.0" styleClass="userNameAnchorPaneStyle" stylesheets="@../application.css" visible="true">-->
+      <AnchorPane fx:id="userIdPane" blendMode="SRC_ATOP" layoutX="139.0" layoutY="81.0" prefHeight="295.0" prefWidth="354.0" style="-fx-background-color: rgba(255, 255, 255, 0.1); -fx-background-radius: 10; -fx-border-color: none;" styleClass="loginAnchorPaneStyle" stylesheets="@../application.css" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="139.0" AnchorPane.rightAnchor="142.0" AnchorPane.topAnchor="81.0">
       <children>
-        <AnchorPane fx:id="userIdPane" layoutX="37.0" layoutY="188.0" styleClass="userNameAnchorPaneStyle" visible="true">
+<!--            <Label styleClass="higlightedLoginLable" stylesheets="@../application.css" text="%registrationlogin" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="20.0" />-->
+        <AnchorPane layoutX="-2.0" layoutY="1.0" AnchorPane.bottomAnchor="238.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-            <Label styleClass="higlightedLoginLable" text="%registrationlogin" AnchorPane.leftAnchor="54.0" AnchorPane.topAnchor="20.0" />
-            <TextField fx:id="userId" layoutY="158.0" onAction="#validateUserId" promptText="%withusername" styleClass="loginTextStyle" AnchorPane.leftAnchor="53.0" />
-            <ComboBox fx:id="appLanguage" layoutY="101.0" promptText="%chooselanguage" styleClass="loginCombobox" AnchorPane.leftAnchor="53.0" />
-            <Button fx:id="sub1" layoutX="53.0" layoutY="211.0" mnemonicParsing="false" onAction="#validateUserId" styleClass="loginSubmitStyle" text="%submit" />
-            <ProgressIndicator fx:id="progressIndicator" layoutX="130.0" layoutY="50.0" progress="0.0" visible="false" />
-            <Hyperlink fx:id="forgotUsrnme" layoutX="167.0" layoutY="293.0" mnemonicParsing="false" onAction="#forgotUsrname" styleClass="hyperLinkStyle" text="%forgotUsername" visible="false" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="76.0" prefWidth="371.0" styleClass="higlightedLoginLable" stylesheets="@../application.css" text="%registrationlogin" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <font>
+                <Font size="14.0" />
+              </font>
+            </Label>
           </children>
         </AnchorPane>
-        <AnchorPane fx:id="credentialsPane" layoutX="37.0" layoutY="188.0" styleClass="loginAnchorPaneExtendedStyle" visible="false">
+
+<!--            <TextField fx:id="userId" layoutY="158.0" onAction="#validateUserId" promptText="%withusername" styleClass="loginTextStyle" AnchorPane.leftAnchor="53.0" />-->
+        <TextField fx:id="userId" alignment="CENTER" layoutX="62.0" layoutY="138.0" onAction="#validateUserId" prefHeight="40.0" prefWidth="230.0" promptText="%withusername" styleClass="loginTextStyle" stylesheets="@../application.css" AnchorPane.bottomAnchor="117.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="138.0">
+          <font>
+            <Font size="13.0" />
+          </font>
+        </TextField>
+
+            <ComboBox fx:id="appLanguage" layoutX="62.0" layoutY="78.0" prefWidth="257.0" promptText="%chooselanguage" scaleShape="false" styleClass="loginCombobox" stylesheets="@../application.css" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="62.0" />
+
+<!--            <Button fx:id="sub1" layoutX="53.0" layoutY="211.0" mnemonicParsing="false" onAction="#validateUserId" styleClass="loginSubmitStyle" text="%submit" />-->
+        <Button fx:id="sub1" alignment="CENTER" contentDisplay="CENTER" defaultButton="true" layoutX="62.0" layoutY="192.0" mnemonicParsing="false" onAction="#validateUserId" prefHeight="40.0" prefWidth="230.0" styleClass="loginSubmitStyle" stylesheets="@../application.css" text="%submit" textFill="#034b64" AnchorPane.bottomAnchor="63.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="192.0">
+          <cursor>
+            <Cursor fx:constant="HAND" />
+          </cursor>
+        </Button>
+
+<!--        <ProgressIndicator fx:id="progressIndicator" layoutX="130.0" layoutY="50.0" progress="0.0" visible="false" />-->
+<!--            <Hyperlink fx:id="forgotUsrnme" layoutX="167.0" layoutY="293.0" mnemonicParsing="false" onAction="#forgotUsrname" styleClass="hyperLinkStyle" text="%forgotUsername" visible="false" />-->
+        <Hyperlink fx:id="forgotUsrnme" alignment="CENTER" contentDisplay="CENTER" layoutX="193.0" layoutY="266.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="112.0" styleClass="hyperLinkStyle" stylesheets="@../application.css" text="%forgotUsername" visible="false" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="193.0" AnchorPane.rightAnchor="49.0" AnchorPane.topAnchor="266.0">
+          <font>
+            <Font size="14.0" />
+          </font></Hyperlink>
+        <ProgressIndicator fx:id="progressIndicator" layoutX="303.0" layoutY="9.0" prefHeight="49.0" prefWidth="47.0" progress="0.0" style="-fx-accent: #f3b32b;" visible="false" AnchorPane.bottomAnchor="237.0" AnchorPane.leftAnchor="303.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="9.0" />
+
+ </children>
+        </AnchorPane>
+
+<!--        <AnchorPane fx:id="credentialsPane" layoutX="37.0" layoutY="188.0" styleClass="loginAnchorPaneExtendedStyle">-->
+      <AnchorPane fx:id="credentialsPane" layoutX="140.0" layoutY="81.0" prefHeight="295.0" prefWidth="354.0" style="-fx-background-radius: 10; -fx-background-color: rgba(255, 255, 255, 0.1); -fx-border-color: none;" styleClass="loginAnchorPaneExtendedStyle" stylesheets="@../application.css" visible="false" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="140.0" AnchorPane.rightAnchor="141.0" AnchorPane.topAnchor="81.0">
+
+      <children>
+<!--            <Label styleClass="higlightedLoginLable" text="%registrationlogin" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="41.0" />-->
+        <AnchorPane layoutX="57.0" layoutY="1.0" AnchorPane.bottomAnchor="238.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
           <children>
-            <Label styleClass="higlightedLoginLable" text="%registrationlogin" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="41.0" />
-            <PasswordField fx:id="password" layoutY="116.0" onAction="#validateCredentials" promptText="%withpword" styleClass="loginTextStyle" AnchorPane.leftAnchor="53.0" />
-            <Button fx:id="sub2" layoutX="52.0" layoutY="171.0" mnemonicParsing="false" onAction="#validateCredentials" styleClass="loginSubmitStyle" text="%submit" />
-            <!--                   <Button layoutX="52.0" layoutY="222.0" mnemonicParsing="false" styleClass="loginSubmitStyle" text="%resetPassword" /> -->
-            <Hyperlink fx:id="forgotPword" layoutX="270.0" layoutY="222.0" mnemonicParsing="false" onAction="#forgotPword" styleClass="hyperLinkStyle" text="%forgotPword" />
-            <Hyperlink fx:id="back" layoutX="52.0" layoutY="222.0" mnemonicParsing="false" onAction="#back" styleClass="hyperLinkStyle" text="%back" />
-            <ProgressIndicator fx:id="passwordProgressIndicator" layoutX="130.0" layoutY="50.0" progress="0.0" visible="false" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="76.0" prefWidth="371.0" styleClass="higlightedLoginLable" stylesheets="@../application.css" text="%registrationlogin" textFill="#034b64" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <font>
+                <Font size="14.0" />
+              </font>
+            </Label>
           </children>
+        </AnchorPane>
+
+<!--            <PasswordField fx:id="password" layoutY="116.0" onAction="#validateCredentials" promptText="%withpword" styleClass="loginTextStyle" AnchorPane.leftAnchor="53.0" />-->
+        <PasswordField fx:id="password" alignment="CENTER" layoutX="63.0" layoutY="91.0" onAction="#validateCredentials" prefHeight="40.0" prefWidth="230.0" promptText="%withpword" styleClass="loginTextStyle" stylesheets="@../application.css" AnchorPane.bottomAnchor="164.0" AnchorPane.leftAnchor="63.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="91.0">
+          <font>
+            <Font size="13.0" />
+          </font>
+        </PasswordField>
+
+<!--        <Button fx:id="sub2" layoutX="52.0" layoutY="171.0" mnemonicParsing="false" onAction="#validateCredentials" styleClass="loginSubmitStyle" text="%submit" />-->
+        <Button contentDisplay="CENTER" layoutX="62.0" layoutY="163.0" mnemonicParsing="false" onAction="#validateCredentials" prefHeight="40.0" prefWidth="230.0" styleClass="loginSubmitStyle" stylesheets="@../application.css" text="%submit" AnchorPane.bottomAnchor="92.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="163.0">
+          <cursor>
+            <Cursor fx:constant="HAND" />
+          </cursor>
+        </Button>
+
+        <!--                   <Button layoutX="52.0" layoutY="222.0" mnemonicParsing="false" styleClass="loginSubmitStyle" text="%resetPassword" /> -->
+<!--            <Hyperlink fx:id="forgotPword" layoutX="270.0" layoutY="222.0" mnemonicParsing="false" onAction="#forgotPword" styleClass="hyperLinkStyle" text="%forgotPword" />-->
+<!--            <Hyperlink fx:id="back" layoutX="52.0" layoutY="222.0" mnemonicParsing="false" onAction="#back" styleClass="hyperLinkStyle" text="%back" />-->
+<!--            <ProgressIndicator fx:id="passwordProgressIndicator" layoutX="130.0" layoutY="50.0" progress="0.0" visible="false" />-->
+        <Hyperlink fx:id="forgotPword" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="183.0" layoutY="267.0" mnemonicParsing="false" onAction="#forgotPword" prefHeight="24.0" prefWidth="110.0" styleClass="hyperLinkStyle" text="%forgotPword" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="183.0" AnchorPane.rightAnchor="61.0" AnchorPane.topAnchor="267.0">
+          <font>
+            <Font size="14.0" />
+          </font>
+        </Hyperlink>
+        <Hyperlink fx:id="back" accessibleRole="BUTTON" alignment="CENTER" contentDisplay="CENTER" layoutX="62.0" layoutY="217.0" mnemonicParsing="false" onAction="#back" prefHeight="39.0" prefWidth="230.0" styleClass="loginBackStyle" stylesheets="@../application.css" text="%back" AnchorPane.bottomAnchor="39.0" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="62.0" AnchorPane.topAnchor="217.0" />
+        <ProgressIndicator fx:id="passwordProgressIndicator" layoutX="305.0" layoutY="9.0" prefHeight="49.0" prefWidth="45.0" progress="0.0" style="-fx-accent: #f3b32b;" visible="false" AnchorPane.bottomAnchor="237.0" AnchorPane.leftAnchor="305.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="9.0" />
+
+      </children>
+        <effect>
+          <DropShadow height="5.0" radius="2.0" width="5.0">
+            <input>
+              <ColorAdjust />
+            </input>
+            <color>
+              <Color red="1.0" green="1.0" blue="1.0" />
+            </color>
+          </DropShadow>
+        </effect>
         </AnchorPane>
         <AnchorPane fx:id="otpPane" layoutX="-6.0" layoutY="151.0" prefHeight="297.0" prefWidth="366.0" styleClass="loginAnchorPaneExtendedStyle" visible="false">
           <children>
@@ -75,7 +152,7 @@
             <ProgressIndicator fx:id="fpProgressIndicator" layoutX="130.0" layoutY="50.0" progress="0.0" visible="false" />
           </children>
         </AnchorPane>
-        <AnchorPane fx:id="irisPane" layoutX="55.0" layoutY="231.0" prefHeight="242.0" prefWidth="379.0" styleClass="loginAnchorPaneStyle" visible="false">
+        <AnchorPane fx:id="irisPane" layoutX="55.0" layoutY="231.0" prefHeight="242.0" prefWidth="379.0" styleClass="loginAnchorPaneStyle" stylesheets="@../application.css" visible="false">
           <children>
             <Label styleClass="higlightedLoginLable" text="%registrationlogin" AnchorPane.leftAnchor="57.0" AnchorPane.topAnchor="31.0" />
             <Label layoutX="57.0" layoutY="76.0" text="%withiris" />
@@ -104,7 +181,7 @@
             <ProgressIndicator fx:id="faceProgressIndicator" layoutX="130.0" layoutY="50.0" progress="0.0" visible="false" />
           </children>
         </AnchorPane>
-        <AnchorPane fx:id="errorPane" layoutX="108.0" layoutY="153.0" styleClass="loginAnchorPaneStyle" visible="false">
+        <AnchorPane fx:id="errorPane" layoutX="108.0" layoutY="153.0" styleClass="loginAnchorPaneStyle" stylesheets="@../application.css" visible="false">
           <children>
             <Label prefWidth="300.0" text="%internalsystemerror.pleasecontactadmin." />
           </children>
@@ -112,19 +189,53 @@
       </children>
     </AnchorPane>
   </right>
+
   <top>
-    <HBox id="header-section" prefHeight="27.0" prefWidth="523.0">
+    <HBox id="header-section" alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="808.0" style="-fx-background-color: rgb(71, 244, 199,0.1);" styleClass="LandingPageHeader" stylesheets="@../application.css" BorderPane.alignment="CENTER">
       <children>
-        <AnchorPane prefHeight="27.0" prefWidth="71.0">
-          <children>
-            <ImageView fx:id="mosipLogoImageView" fitHeight="34.0" fitWidth="30.0" layoutX="20.0" layoutY="2.0">
-              <image>
-                <Image url="@../images/logo-final.png" />
-              </image>
-            </ImageView>
-          </children>
-        </AnchorPane>
+        <ImageView fitHeight="52.0" fitWidth="44.0" layoutX="20.0" layoutY="2.0" preserveRatio="true">
+          <image>
+            <Image url="@../images/flag-round.png" />
+          </image>
+          <HBox.margin>
+            <Insets />
+          </HBox.margin>
+          <effect>
+            <Glow />
+          </effect>
+        </ImageView>
+        <Separator orientation="VERTICAL" prefHeight="53.0" prefWidth="2.0">
+          <HBox.margin>
+            <Insets left="8.0" right="8.0" />
+          </HBox.margin>
+          <padding>
+            <Insets bottom="13.0" top="13.0" />
+          </padding></Separator>
+        <VBox alignment="CENTER_LEFT" prefHeight="87.0" prefWidth="351.0">
+          <Label style="-fx-font-family: 'Noto Sans Ethiopic'; -fx-font-size: 15.5; -fx-font-weight: bold;" text="የኢትዮጵያ ብሔራዊ መታወቂያ - የምዝገባ ስርዓት" textFill="WHITE">
+            <font>
+              <Font name="Ethiopic Hiwua" size="14.0" />
+            </font>
+            <VBox.margin>
+              <Insets left="5.0" />
+            </VBox.margin></Label>
+          <Label text="Ethiopian National ID - Registration System" textFill="WHITE">
+            <font>
+              <Font name="System Bold" size="14.0" />
+            </font>
+            <VBox.margin>
+              <Insets left="5.0" />
+            </VBox.margin></Label>
+          <padding>
+            <Insets bottom="5.0" top="5.0" />
+          </padding>
+        </VBox>
       </children>
+      <padding>
+        <Insets left="60.0" />
+      </padding>
     </HBox>
   </top>
+
+
 </BorderPane>

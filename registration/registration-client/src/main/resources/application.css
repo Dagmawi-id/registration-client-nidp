@@ -205,15 +205,20 @@
 	-fx-font-size: 15.0px;
 }
 
+.LandingPageHeader{
+
+	-fx-background-color: rgb(71, 244, 199,0.1)
+}
+
 #hbox {
 	-fx-background-color: #ffffff;
 }
 
 #header-section {
-	-fx-padding: 10.0 10.0 10.0 10.0;
-	-fx-border-width: 1.0;
-	-fx-border-color: #dee2e6 transparent transparent transparent;
-	-fx-background-color: #dee2e6;
+	/*-fx-padding: 10.0 10.0 10.0 10.0;*/
+	/*-fx-border-width: 1.0;*/
+	/*-fx-border-color: #dee2e6 transparent transparent transparent;*/
+	/*-fx-background-color: #dee2e6;*/
 }
 
 .content {
@@ -234,9 +239,9 @@
 #footer-section {
 	-fx-alignment: center;
 	-fx-padding: 10.0 10.0 10.0 10.0;
-	-fx-border-width: 1.0;
-	-fx-border-color: #E8E8E8 transparent transparent transparent;
-	-fx-background-color: #dee2e6;
+	/*-fx-border-width: 1.0;*/
+	/*-fx-border-color: #E8E8E8 transparent transparent transparent;*/
+	/*-fx-background-color: #dee2e6;*/
 }
 
 #common-hbox {
@@ -458,6 +463,7 @@
 }
 
 .loginBorderPaneStyle {
+	-fx-background-color: #f2f2f2;
 	-fx-pref-height: 530.0px;
 	-fx-pref-width: 808.0px;
 }
@@ -486,9 +492,10 @@
 }
 
 .loginTextStyle {
-	-fx-pref-height: 39.0px;
-	-fx-pref-width: 221.0px;
-	-fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);
+	/*-fx-pref-height: 39.0px;*/
+	/*-fx-pref-width: 221.0px;*/
+	/*-fx-prompt-text-fill: derive(-fx-control-inner-background,-30%);*/
+
 }
 
 .loginTextStyle:focused {
@@ -503,50 +510,66 @@
 }
 
 .loginSubmitStyle {
-	-fx-pref-height: 30.0px;
-	-fx-pref-width: 81.0px;
-	-fx-background-color: #ffffff;
-	-fx-background-radius: 6.0, 5.0;
-	-fx-background-insets: 0.0, 1.0;
-	-fx-text-fill: #ffffff;
-	-fx-font-size: 10.0px;
+	/*-fx-pref-height: 30.0px;*/
+	/*-fx-pref-width: 81.0px;*/
+	-fx-background-color:  #00c9b6;
+	-fx-background-radius: 5;
+	-fx-border-color: white;
+	-fx-border-width: 2;
+	-fx-border-radius: 5;
+	-fx-text-fill: #f2f2f2;
+	-fx-font-weight: bold;
+	-fx-font-size: 13.0px;
 	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.6), 5.0,
-		0.0, 0.0, 1.0);
+	0.0, 0.0, 1.0);
+	-fx-text-transform: capitalize;
 }
 
 .loginSubmitStyle1 {
-	-fx-pref-height: 30.0px;
-	-fx-pref-width: 50.0px;
-	-fx-background-color: #ffffff;
+	/*-fx-pref-height: 30.0px;*/
+	/*-fx-pref-width: 50.0px;*/
+	/*-fx-background-color: #ffffff;*/
 	-fx-background-radius: 6.0, 5.0;
 	-fx-background-insets: 0.0, 1.0;
+	-fx-font-weight: bold;
 	-fx-text-fill: black;
 	-fx-font-size: 10.0px;
 	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.6), 5.0,
-		0.0, 0.0, 1.0);
+	0.0, 0.0, 1.0);
 }
 
 .loginSubmitStyle:hover {
-	-fx-background-color: #004887;
-	-fx-border-color: #004887;
-	-fx-text-fill: #FFFFFF;
+	-fx-background-color: #00c9b6;
+	-fx-border-color: #ffff;
+	-fx-background-radius: 5;
+	-fx-font-size: 14.0px;
+	-fx-border-width: 1;
+	/*-fx-font-weight: bold;*/
+	-fx-text-fill: #f2f2f2;
+	-fx-border-radius: 5;
+	-fx-font-weight: bold;
 }
 
 .loginSubmitStyle:pressed {
-	-fx-background-color: #004887;
-	-fx-border-color: #004887;
-	-fx-text-fill: #FFFFFF;
+	-fx-background-color:#00c9b6;
+	-fx-border-width: 2;
+	-fx-background-radius: 5;
+	-fx-border-color: #f2f2f2;
+	/*-fx-font-weight: bold;*/
+	-fx-text-fill: #09384f;
+	-fx-border-radius: 5;
+	-fx-font-weight: bold;
 }
 
 .loginSubmitStyle1:hover {
-	-fx-background-color: #004887;
-	-fx-border-color: #004887;
+	-fx-background-color:#76b5d4;
+	-fx-border-color: #76b5d4;
 	-fx-text-fill: #FFFFFF;
 }
 
 .loginSubmitStyle1:pressed {
-	-fx-background-color: #004887;
-	-fx-border-color: #004887;
+	-fx-background-color:#76b5d4;
+	-fx-border-color: #034B64;
 	-fx-text-fill: #FFFFFF;
 }
 
@@ -630,15 +653,15 @@
 Working on new Css by taleev
 */
 #loginScreen {
-	-fx-background-image: url('/images/LoginBackGround.png');
+	-fx-background-image: url('/images/edited_backround.jpg');
 	-fx-background-size: cover, auto;
 	-fx-background-position: left top, center;
 }
 
 #header-section {
-	-fx-background-color: rgb(11.0, 106.0, 130.0, 0.3);
-	-fx-pref-height: 30.0px;
-	-fx-pref-width: 1920.0px;
+	/*-fx-background-color: rgb(11.0, 106.0, 130.0, 0.3);*/
+	/*-fx-pref-height: 30.0px;*/
+	/*-fx-pref-width: 1920.0px;*/
 }
 
 #footer-section {
@@ -668,12 +691,15 @@ Working on new Css by taleev
 }
 
 .loginTextStyle {
-	-fx-pref-height: 35.0px;
-	-fx-pref-width: 312.0px;
+	/*-fx-pref-height: 35.0px;*/
+	/*-fx-pref-width: 312.0px;*/
+	-fx-text-fill: #09384f;
+	-fx-font-weight: bold;
+	-fx-font-size: 1.2em;
 	-fx-border-width: 0.0 0.0 2.0 0.0;
-	-fx-border-color: #005baa;
+	-fx-border-color: #47f4c7;
 	-fx-effect: dropshadow(three-pass-box, rgba(0.0, 0.0, 0.0, 0.3), 5.0,
-		0.0, 0.0, 1.0);
+	0.0, 0.0, 1.0);
 }
 
 .preregFetchBtnStyle {
@@ -1047,7 +1073,7 @@ Working on new Css by taleev
 	-fx-background-color: #ffffff;
 	-fx-font-size: 14.0px;	
 	-fx-pref-height: 35.0px;
-	-fx-pref-width: 312.0px;
+	/*-fx-pref-width: 312.0px;*/
 	-fx-border-width: 0.0 0.0 2.0 0.0;
 	-fx-border-color: #005baa;
 }

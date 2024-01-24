@@ -30,7 +30,7 @@ import javafx.scene.layout.Pane;
 
 /**
  * Class for validating the date fields
- * 
+ *
  * @author Taleev.Aalam
  * @author Balaji
  * @since 1.0.0
@@ -51,16 +51,37 @@ public class DateValidation extends BaseController {
 
 		if (newValue.matches(RegistrationConstants.NUMBER_REGEX)) {
 			switch (fieldType) {
-			case RegistrationConstants.DD:
-				return Integer.parseInt(newValue) > RegistrationConstants.DAYS ? false : true;
-			case RegistrationConstants.MM:
-				return Integer.parseInt(newValue) > RegistrationConstants.MONTH ? false : true;
-			case RegistrationConstants.YYYY:
-				return newValue.length() > 4 ? false : true;
-			case RegistrationConstants.AGE_FIELD:
-				int age = Integer.parseInt(newValue);
-				return (age < 1 || Integer.parseInt(newValue) > Integer
-						.parseInt(getValueFromApplicationContext(RegistrationConstants.MAX_AGE))) ? false : true;
+				case RegistrationConstants.DD:
+					return Integer.parseInt(newValue) > RegistrationConstants.DAYS ? false : true;
+				case RegistrationConstants.MM:
+					return Integer.parseInt(newValue) > RegistrationConstants.MONTH ? false : true;
+				case RegistrationConstants.YYYY:
+					return newValue.length() > 4 ? false : true;
+				case RegistrationConstants.AGE_FIELD:
+					int age = Integer.parseInt(newValue);
+					return (age < 1 || Integer.parseInt(newValue) > Integer
+							.parseInt(getValueFromApplicationContext(RegistrationConstants.MAX_AGE))) ? false : true;
+			}
+		}
+		return false;
+	}
+
+	public boolean isNewETDateValueValid(String newValue, String fieldType) {
+		if (newValue.isEmpty())
+			return true;
+
+		if (newValue.matches(RegistrationConstants.NUMBER_REGEX)) {
+			switch (fieldType) {
+				case RegistrationConstants.DD:
+					return Integer.parseInt(newValue) > 30 ? false : true;
+				case RegistrationConstants.MM:
+					return Integer.parseInt(newValue) > 13 ? false : true;
+				case RegistrationConstants.YYYY:
+					return newValue.length() > 4 ? false : true;
+				case RegistrationConstants.AGE_FIELD:
+					int age = Integer.parseInt(newValue);
+					return (age < 1 || Integer.parseInt(newValue) > Integer
+							.parseInt(getValueFromApplicationContext(RegistrationConstants.MAX_AGE))) ? false : true;
 			}
 		}
 		return false;
@@ -98,7 +119,7 @@ public class DateValidation extends BaseController {
 	}
 
 	public boolean validateAge(Pane parentPane, String schemaId) {
-		String fieldId = schemaId;
+		String fieldId =  schemaId;
 		resetFieldStyleClass(parentPane, fieldId, null);
 
 		TextField ageField = ((TextField) getFxElement(parentPane,
@@ -133,15 +154,15 @@ public class DateValidation extends BaseController {
 
 					LocalDate date = LocalDate.of(defaultDate.get(Calendar.YEAR), defaultDate.get(Calendar.MONTH) + 1,
 							defaultDate.get(Calendar.DATE));
-					
+
 					validator = validation.validateSingleString(fieldId,
 							getRegistrationDTOFromSession().getSelectedLanguagesByApplicant().get(0));
 
 					isValid = validator != null && validator.getValidator() != null
 							? (date.format(DateTimeFormatter.ofPattern(ApplicationContext.getDateFormat())))
-									.matches(validator.getValidator())
+							.matches(validator.getValidator())
 							: true;
-									
+
 					if (isValid) {
 						populateDateFields(parentPane, fieldId, age);
 					}
@@ -316,38 +337,38 @@ public class DateValidation extends BaseController {
 	 * @throws ParseException
 	 */
 	public boolean validateDateWithMaxAndMinDays(Pane parentPane, String fieldId, int minDays, int maxDays) {
-			resetFieldStyleClass(parentPane, fieldId, null);
+		resetFieldStyleClass(parentPane, fieldId, null);
 
-			TextField dd = (TextField) getFxElement(parentPane,
-					fieldId + RegistrationConstants.DD + RegistrationConstants.TEXT_FIELD);
-			TextField mm = (TextField) getFxElement(parentPane,
-					fieldId + RegistrationConstants.MM + RegistrationConstants.TEXT_FIELD);
-			TextField yyyy = (TextField) getFxElement(parentPane,
-					fieldId + RegistrationConstants.YYYY + RegistrationConstants.TEXT_FIELD);
+		TextField dd = (TextField) getFxElement(parentPane,
+				fieldId + RegistrationConstants.DD + RegistrationConstants.TEXT_FIELD);
+		TextField mm = (TextField) getFxElement(parentPane,
+				fieldId + RegistrationConstants.MM + RegistrationConstants.TEXT_FIELD);
+		TextField yyyy = (TextField) getFxElement(parentPane,
+				fieldId + RegistrationConstants.YYYY + RegistrationConstants.TEXT_FIELD);
 
-			boolean isValid = false;
-			Validator validator = null;
-			if (dd.getText().matches(RegistrationConstants.NUMBER_REGEX)
-					&& mm.getText().matches(RegistrationConstants.NUMBER_REGEX)
-					&& yyyy.getText().matches(RegistrationConstants.NUMBER_REGEX)
-					&& yyyy.getText().matches(RegistrationConstants.FOUR_NUMBER_REGEX)) {
+		boolean isValid = false;
+		Validator validator = null;
+		if (dd.getText().matches(RegistrationConstants.NUMBER_REGEX)
+				&& mm.getText().matches(RegistrationConstants.NUMBER_REGEX)
+				&& yyyy.getText().matches(RegistrationConstants.NUMBER_REGEX)
+				&& yyyy.getText().matches(RegistrationConstants.FOUR_NUMBER_REGEX)) {
 
-				validator = validation.validateSingleString(fieldId,
-						getRegistrationDTOFromSession().getSelectedLanguagesByApplicant().get(0));
+			validator = validation.validateSingleString(fieldId,
+					getRegistrationDTOFromSession().getSelectedLanguagesByApplicant().get(0));
 
-				LocalDate localDate = LocalDate.of(Integer.valueOf(yyyy.getText()),
-							Integer.valueOf(mm.getText()), Integer.valueOf(dd.getText()));
+			LocalDate localDate = LocalDate.of(Integer.valueOf(yyyy.getText()),
+					Integer.valueOf(mm.getText()), Integer.valueOf(dd.getText()));
 
-				String dob = localDate.format(DateTimeFormatter.ofPattern(ApplicationContext.getDateFormat()));
-				isValid = validator != null && validator.getValidator() != null ? dob.matches(validator.getValidator()) : true;
-				if (isValid) {
-					LocalDate afterMaxDays = LocalDate.now().plusDays(maxDays);
-					LocalDate beforeMinDays = LocalDate.now().plusDays(minDays);
-					isValid = (localDate.isAfter(beforeMinDays) && localDate.isBefore(afterMaxDays));
-				}
+			String dob = localDate.format(DateTimeFormatter.ofPattern(ApplicationContext.getDateFormat()));
+			isValid = validator != null && validator.getValidator() != null ? dob.matches(validator.getValidator()) : true;
+			if (isValid) {
+				LocalDate afterMaxDays = LocalDate.now().plusDays(maxDays);
+				LocalDate beforeMinDays = LocalDate.now().plusDays(minDays);
+				isValid = (localDate.isAfter(beforeMinDays) && localDate.isBefore(afterMaxDays));
 			}
-			resetFieldStyleClass(parentPane, fieldId, isValid ? null : getErrorMessage(validator, RegistrationConstants.INVALID_DATE_LIMIT,
-					minDays, maxDays));
-			return isValid;
+		}
+		resetFieldStyleClass(parentPane, fieldId, isValid ? null : getErrorMessage(validator, RegistrationConstants.INVALID_DATE_LIMIT,
+				minDays, maxDays));
+		return isValid;
 	}
 }

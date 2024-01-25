@@ -386,26 +386,32 @@ public class BaseController {
 	public void generateAlert(String title, String context) {
 		try {
 			closeAlreadyExistedAlert();
-			alertStage = new Stage();
-			Pane authRoot = BaseController.load(getClass().getResource(RegistrationConstants.ALERT_GENERATION));
-			Scene scene = new Scene(authRoot);
-			scene.getStylesheets().add(ClassLoader.getSystemClassLoader().getResource(getCssName()).toExternalForm());
-			alertStage.initStyle(StageStyle.UNDECORATED);
-			alertStage.setScene(scene);
-			alertStage.initModality(Modality.WINDOW_MODAL);
-			alertController.getAlertGridPane().setPrefHeight((double)context.length() / 2 + 110);
-			if (scanPopUpViewController.getPopupStage() != null
-					&& scanPopUpViewController.getPopupStage().isShowing()) {
-				alertStage.initOwner(scanPopUpViewController.getPopupStage());
-				alertTypeCheck(title, context, alertStage);
-			} else if (registrationApprovalController.getPrimaryStage() != null
-					&& registrationApprovalController.getPrimaryStage().isShowing()) {
-				alertStage.initOwner(registrationApprovalController.getPrimaryStage());
-				alertTypeCheck(title, context, alertStage);
-			} else {
+				alertStage = new Stage();
+
+				Pane authRoot = BaseController.load(getClass().getResource(RegistrationConstants.ALERT_GENERATION));
+				Scene scene = new Scene(authRoot);
+				scene.getStylesheets().add(ClassLoader.getSystemClassLoader().getResource(getCssName()).toExternalForm());
+				alertStage.initStyle(StageStyle.UNDECORATED);
+				alertStage.setScene(scene);
+				alertStage.initModality(Modality.NONE);
+
+//				alertController.getAlertGridPane().setPrefHeight((double) context.length() / 2 + 110);
+//
+//
+//			if (scanPopUpViewController.getPopupStage() != null
+//					&& scanPopUpViewController.getPopupStage().isShowing()) {
+//				alertStage.initOwner(scanPopUpViewController.getPopupStage());
+//				alertTypeCheck(title, context, alertStage);
+//			} else if (registrationApprovalController.getPrimaryStage() != null
+//					&& registrationApprovalController.getPrimaryStage().isShowing()) {
+//				alertStage.initOwner(registrationApprovalController.getPrimaryStage());
+//				alertTypeCheck(title, context, alertStage);
+//			} else {
 				alertStage.initOwner(fXComponents.getStage());
 				alertTypeCheck(title, context, alertStage);
-			}
+//			}
+
+
 		} catch (IOException ioException) {
 			LOGGER.error("REGISTRATION - ALERT - BASE_CONTROLLER", APPLICATION_NAME, APPLICATION_ID,
 					ioException.getMessage() + ExceptionUtils.getStackTrace(ioException));
@@ -453,15 +459,15 @@ public class BaseController {
 				SessionContext.map().put(ALERT_STAGE, alertStage);
 			}
 			alertController.generateAlertResponse(title, context);
-			alertStage.showAndWait();
+			alertStage.show();
 		} else {
 			if (SessionContext.isSessionContextAvailable()) {
 				SessionContext.map().put(ALERT_STAGE, alertStage);
 			}
 			alertController.generateAlertResponse(title, context);
-			alertStage.showAndWait();
+			alertStage.show();
 		}
-		alertController.alertWindowExit();
+//		alertController.alertWindowExit();
 	}
 
 	/**
@@ -1291,7 +1297,6 @@ public class BaseController {
 				&& SessionContext.map().get(ALERT_STAGE) != null) {
 			Stage alertStageFromSession = (Stage) SessionContext.map().get(ALERT_STAGE);
 			alertStageFromSession.close();
-
 		}
 	}
 

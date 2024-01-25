@@ -343,13 +343,14 @@ public class LoginController extends BaseController implements Initializable {
 		}
 		forgotUsrnme.setVisible(ApplicationContext.map().containsKey(RegistrationConstants.FORGOT_USERNAME_URL));
 
-		Screen screen = Screen.getPrimary();
-		Rectangle2D bounds = screen.getVisualBounds();
-		primaryStage.setX(bounds.getMinX());
-		primaryStage.setY(bounds.getMinY());
-		primaryStage.setWidth(bounds.getWidth());
-		primaryStage.setHeight(bounds.getHeight());
-		primaryStage.setResizable(false);
+//		Screen screen = Screen.getPrimary();
+//		Rectangle2D bounds = screen.getVisualBounds();
+//		primaryStage.setX(bounds.getMinX());
+//		primaryStage.setY(bounds.getMinY());
+//		primaryStage.setWidth(bounds.getWidth());
+//		primaryStage.setHeight(bounds.getHeight());
+		primaryStage.setMaximized(true);
+		primaryStage.setResizable(true);
 		primaryStage.setScene(scene);
 		primaryStage.getIcons().add(new Image(getClass().getResource(RegistrationConstants.LOGO).toExternalForm()));
 		primaryStage.show();

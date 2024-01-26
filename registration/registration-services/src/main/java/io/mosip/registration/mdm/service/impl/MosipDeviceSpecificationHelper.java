@@ -82,11 +82,10 @@ public class MosipDeviceSpecificationHelper {
 		if (matcher.find()) {
 			return matcher.group(1);
 		}
-		return "";
-//		throw new RegBaseCheckedException(RegistrationExceptionConstants.MDS_PAYLOAD_EMPTY.getErrorCode(),
-//				RegistrationExceptionConstants.MDS_PAYLOAD_EMPTY.getErrorMessage());
+		throw new RegBaseCheckedException(RegistrationExceptionConstants.MDS_PAYLOAD_EMPTY.getErrorCode(),
+				RegistrationExceptionConstants.MDS_PAYLOAD_EMPTY.getErrorMessage());
 	}
-	
+
 	public String getSignature(String data) throws RegBaseCheckedException {
 		if (data == null || data.isEmpty()) {
 			throw new RegBaseCheckedException(RegistrationExceptionConstants.MDS_JWT_INVALID.getErrorCode(),
@@ -112,7 +111,7 @@ public class MosipDeviceSpecificationHelper {
 			} else {
 				return mapper.readValue(result, MdmDeviceInfo.class);
 			}
-			
+
 		} catch (Exception exception) {
 			LOGGER.error(APPLICATION_ID, APPLICATION_NAME, "Failed to decode device info",
 					ExceptionUtils.getStackTrace(exception));
@@ -217,7 +216,7 @@ public class MosipDeviceSpecificationHelper {
 					RegistrationExceptionConstants.MDS_STREAM_TIMEOUT.getErrorMessage());
 		}
 	}
-	
+
 	public void validateResponseTimestamp(String responseTime) throws RegBaseCheckedException {
 		if(responseTime != null) {
 			LocalDateTime ts = DateUtils.parseUTCToLocalDateTime(responseTime, MDM_DATETIME_PATTERN);
@@ -236,8 +235,8 @@ public class MosipDeviceSpecificationHelper {
 		return Integer.parseInt((String) ApplicationContext.map()
 				.getOrDefault(RegistrationConstants.MDS_RESP_ALLOWED_LAG_MINS, "5"));
 	}
-	
-	
+
+
 	public void validateQualityScore(String qualityScore) throws RegBaseCheckedException {
 		if (qualityScore == null || qualityScore.isEmpty()) {
 			throw new RegBaseCheckedException(
@@ -275,7 +274,7 @@ public class MosipDeviceSpecificationHelper {
 			return EntityUtils.toString(response.getEntity());
 		}
 	}
-	
+
 	public CloseableHttpResponse getHttpClientResponse(String url, String method, String body) throws IOException {
 		int timeout = getMDMConnectionTimeout(method);
 		LOGGER.debug("MDM HTTP CALL method : {}  with timeout {}", method, timeout);

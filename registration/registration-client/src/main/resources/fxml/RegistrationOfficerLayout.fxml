@@ -20,11 +20,11 @@
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
-         <children>           	
-			<fx:include fx:id="homeContent" prefHeight="${onboardPane.height}" prefWidth="${onboardPane.width}" source="RegistrationOfficerPacketLayout.fxml" visible="false" />	           	
+         <children>
+			<fx:include fx:id="homeContent" prefHeight="${onboardPane.height}" prefWidth="${onboardPane.width}" source="RegistrationOfficerPacketLayout.fxml" visible="false" />
          </children>
       </GridPane>
-      <GridPane fx:id="headerHolder">      
+      <GridPane fx:id="headerHolder">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -32,17 +32,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <GridPane fx:id="headerHolder">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                   <fx:include fx:id="header" prefHeight="${headerHolder.height}" prefWidth="${headerHolder.width}" source="Header.fxml" visible="true" />
-               </children>
-            </GridPane>
+             <fx:include fx:id="header" prefHeight="${headerHolder.height}" prefWidth="${headerHolder.width}" source="Header.fxml" visible="true" />
          </children>
       </GridPane>      
    </children>

@@ -584,7 +584,7 @@
 }
 
 .optionsButtonStyle {
-	
+
 }
 
 .reRegAnchorPane {
@@ -1071,7 +1071,7 @@ Working on new Css by taleev
 
 .loginCombobox {
 	-fx-background-color: #ffffff;
-	-fx-font-size: 14.0px;	
+	-fx-font-size: 14.0px;
 	-fx-pref-height: 35.0px;
 	/*-fx-pref-width: 312.0px;*/
 	-fx-border-width: 0.0 0.0 2.0 0.0;
@@ -1086,7 +1086,7 @@ Working on new Css by taleev
 
 .filterCombobox {
 	-fx-background-color: #ffffff;
-	-fx-font-size: 14.0px;	
+	-fx-font-size: 14.0px;
 	-fx-pref-height: 35.0px;
 	-fx-pref-width: 240.0px;
 	-fx-border-width: 0.0 0.0 0.0 0.0;
@@ -1515,7 +1515,7 @@ Working on new Css by taleev
 }
 
 /*
- *	rejection page 
+ *	rejection page
  */
 .rejectionPageHeader {
 	-fx-background-color: #FFFFFF;
@@ -1984,10 +1984,12 @@ Working on new Css by taleev
 
 /* Home page design starts here */
 .homeContent {
-/*	-fx-background-image: url(images/pexels-photo.png);*/
+	/*-fx-background-image: url(images/edited_backround.jpg);*/
 	-fx-background-repeat: no-repeat;
-	-fx-background-size: auto;
-	-fx-border-color: #F4F4F4;
+	-fx-background-size: cover;
+	-fx-background-position: top;
+
+	/*-fx-border-color: #F4F4F4;*/
 	-fx-border-width: 0.0 1.0 1.0 1.0;
 }
 
@@ -2008,6 +2010,9 @@ Working on new Css by taleev
 	-fx-font-family: Roboto;
 }
 
+.RegOptionsHeader{
+	-fx-background-color: rgb(9, 56, 79,0.6);
+}
 .uinUpdateStyle {
 	-fx-background-radius: 4.0, 4.0, 4.0, 4.0;
 	-fx-border-radius: 4.0, 4.0, 4.0, 4.0;
@@ -2057,6 +2062,71 @@ Working on new Css by taleev
 	-fx-text-fill: #FFFFFF;
 }
 
+
+.modernButton {
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-background-color: #FFFFFF;
+	-fx-effect: dropshadow(gaussian, rgba(131, 131, 131, 0.3), 1, 0, 0, 1);
+}
+
+.modernButton:hover   {
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-background-color: #034B64;
+	-fx-text-fill: #FFFFFF;
+	-fx-border-color: #FFFFFF;
+	-fx-border-width: 1;
+	-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 14, 0, 0, 2);
+}
+
+.modernButton:pressed, .modernButton:pressed  {
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-background-color:#034B64;
+	-fx-text-fill: #FFFFFF;
+	-fx-border-width: 1;
+	-fx-border-color: #47f4c7;
+}
+
+
+.modernButtonReg:pressed, .modernButtonReg:pressed  {
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-border-width: 1;
+	-fx-border-color: #FFFFFF;
+	-fx-background-color: #034B64;
+	-fx-text-fill: #FFFFFF;
+}
+
+.modernButtonReg  {
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-background-color: rgb(255, 255, 255,0.9);
+	-fx-text-fill:  #09384f ;
+	-fx-effect: dropshadow(gaussian, rgba(255, 255, 255, 0.3), 3, 0, 0, 2);
+
+}
+
+
+.modernButtonReg:hover , label  {
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-background-color: rgba(69, 231, 188, 0.8);
+	-fx-text-fill: #f2f2f2;
+
+
+}
+
+.modernButtonReg:pressed, .modernButtonReg:pressed label {
+	-fx-background-radius: 6;
+	-fx-border-radius: 6;
+	-fx-background-color:#47f3c7;
+	-fx-text-fill: #FFFFFF;
+	-fx-border-width: 1;
+	-fx-border-color: #FFFFFF;
+
+}
 .operationalPaneDetailsSync:pressed, .operationalPaneDetailsSync:pressed .label
 	{
 	-fx-background-color: #004887;
@@ -2109,15 +2179,16 @@ Working on new Css by taleev
 
 .deviceDetailsHBox {
 	-fx-border-color:#808080;
-	-fx-border-width: 1; 
+	-fx-border-width: 1;
 	-fx-border-style: solid;
 }
 
 .operationalTitle {
-	-fx-text-fill: #005baa;
-	-fx-font-family: Roboto;
+	-fx-text-fill: #034B64;
+	-fx-font-family: "Noto Sans Ethiopic","Noto Sans", sans-serif;
 	-fx-font-size: 16.0px;
 }
+
 
 .operationalDetails {
 	-fx-text-fill: #005baa;

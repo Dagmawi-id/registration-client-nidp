@@ -108,6 +108,9 @@ public class PacketHandlerController extends BaseController implements Initializ
 	private ImageView inProgressImage;
 
 	@FXML
+	private Label reRegistrationCountLbl2 ,pendingApprovalCountLbl2, btnLabelUinUpdate, btnLabelNewReg, btnLabelLostUin , checkUpdates ,btnLabelSyncData,btnLabelSyncData2, btnLabelUploadPacket, btnLabelDownloadPreReg, btnLabelRemap ,btnLabelUpdateOperator, btnLabelDashboard ;
+
+	@FXML
 	private Label lastSyncTime;
 
 	@FXML
@@ -334,72 +337,99 @@ public class PacketHandlerController extends BaseController implements Initializ
 	private void setImagesOnHover() {
 		syncDataPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
-				
 				setImage(syncDataImageView, RegistrationConstants.SYNC_DATA_FOCUSED_IMG);
+
+				btnLabelSyncData.setStyle("-fx-text-fill: white");
+				btnLabelSyncData2.setStyle("-fx-text-fill: white");
+				lastSyncTime.setStyle("-fx-text-fill: white");
 			} else {
-				
 				setImage(syncDataImageView, RegistrationConstants.SYNC_IMG);
+
+				btnLabelSyncData.setStyle("-fx-text-fill: #034B64");
+				btnLabelSyncData2.setStyle("-fx-text-fill: #034B64");
+				lastSyncTime.setStyle("-fx-text-fill: #034B64");
 			}
 		});
 		downloadPreRegDataPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
-
+				btnLabelDownloadPreReg.setStyle("-fx-text-fill: white");
+				lastPreRegPacketDownloadedTime.setStyle("-fx-text-fill: white");
 				setImage(downloadPreRegDataImageView, RegistrationConstants.DOWNLOAD_PREREG_FOCUSED_IMG);
 			} else {
-
+				btnLabelDownloadPreReg.setStyle("-fx-text-fill: #034B64");
+				lastPreRegPacketDownloadedTime.setStyle("-fx-text-fill: #034B64");
 				setImage(downloadPreRegDataImageView, RegistrationConstants.DWLD_PRE_REG_DATA_IMG);
 			}
 		});
 		updateOperatorBiometricsPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
+				btnLabelUpdateOperator.setStyle("-fx-text-fill: white");
+				lastBiometricTime.setStyle("-fx-text-fill: white");
 				setImage(updateOperatorBiometricsImageView, RegistrationConstants.UPDATE_OP_BIOMETRICS_FOCUSED_IMG);
 			} else {
+				btnLabelUpdateOperator.setStyle("-fx-text-fill: #034B64");
+				lastBiometricTime.setStyle("-fx-text-fill: #034B64");
 				setImage(updateOperatorBiometricsImageView, RegistrationConstants.UPDATE_OPERATOR_BIOMETRICS_IMG);
 			}
 		});
 		eodApprovalPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
 				setImage(eodApprovalImageView, RegistrationConstants.PENDING_APPROVAL_FOCUSED_IMG);
+				pendingApprovalCountLbl.setStyle("-fx-text-fill: white");
+				pendingApprovalCountLbl2.setStyle("-fx-text-fill: white");
 			} else {
 				setImage(eodApprovalImageView, RegistrationConstants.PENDING_APPROVAL_IMG);
+				pendingApprovalCountLbl.setStyle("-fx-text-fill: #034B64");
+				pendingApprovalCountLbl2.setStyle("-fx-text-fill: #034B64");
 			}
 		});
 		reRegistrationPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
-				setImage(reRegistrationImageView, RegistrationConstants.RE_REGISTRATION_FOCUSED_IMG);	
+				setImage(reRegistrationImageView, RegistrationConstants.RE_REGISTRATION_FOCUSED_IMG);
+				reRegistrationCountLbl.setStyle("-fx-text-fill: white");
+				reRegistrationCountLbl2.setStyle("-fx-text-fill: white");
 			} else {
-				setImage(reRegistrationImageView, RegistrationConstants.RE_REGISTRATION_IMG);	
+				setImage(reRegistrationImageView, RegistrationConstants.RE_REGISTRATION_IMG);
+				reRegistrationCountLbl.setStyle("-fx-text-fill: #034B64");
+				reRegistrationCountLbl2.setStyle("-fx-text-fill: #034B64");
+
 			}
 		});
 		dashBoardPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
-				setImage(viewReportsImageView, RegistrationConstants.VIEW_REPORTS_FOCUSED_IMG);
+				btnLabelDashboard.setStyle("-fx-text-fill: white");
 			} else {
 				setImage(viewReportsImageView, RegistrationConstants.VIEW_REPORTS_IMG);
+				btnLabelDashboard.setStyle("-fx-text-fill: #034B64");
 			}
 		});
 		uploadPacketPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
 
 				setImage(uploadPacketImageView, RegistrationConstants.UPDATE_OP_BIOMETRICS_FOCUSED_IMG);
+				btnLabelUploadPacket.setStyle("-fx-text-fill: white");
 			} else {
 
 				setImage(uploadPacketImageView, RegistrationConstants.UPDATE_OPERATOR_BIOMETRICS_IMG);
+				btnLabelUploadPacket.setStyle("-fx-text-fill: #034B64");
+
 			}
 		});
 		centerRemapPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
-
+				btnLabelRemap.setStyle("-fx-text-fill: white");
 				setImage(remapImageView, RegistrationConstants.SYNC_DATA_FOCUSED_IMG);
 			} else {
-
+				btnLabelRemap.setStyle("-fx-text-fill: #034B64");
 				setImage(remapImageView, RegistrationConstants.SYNC_IMG);
 			}
 		});
 		checkUpdatesPane.hoverProperty().addListener((ov, oldValue, newValue) -> {
 			if (newValue) {
+				checkUpdates.setStyle("-fx-text-fill: white");
 				setImage(checkUpdatesImageView, RegistrationConstants.DOWNLOAD_PREREG_FOCUSED_IMG);
 			} else {
+				checkUpdates.setStyle("-fx-text-fill: #034B64");
 				setImage(checkUpdatesImageView, RegistrationConstants.DWLD_PRE_REG_DATA_IMG);
 			}
 		});
@@ -787,13 +817,15 @@ public class PacketHandlerController extends BaseController implements Initializ
 		headerController.hasUpdate(null);
 	}
 
-
-	private void loadRegistrationProcesses()  {
+	private void loadRegistrationProcesses() {
 		try {
 			double version = identitySchemaDao.getLatestEffectiveSchemaVersion();
 			List<ProcessSpec> processSpecs = identitySchemaDao.getAllActiveProcessSpecs(version);
 			addParentRowConstraints(processSpecs == null ? 0 : processSpecs.size());
+
 			AtomicInteger i = new AtomicInteger();
+			AtomicInteger columnCounter = new AtomicInteger();
+
 			Objects.requireNonNull(processSpecs).forEach(processSpec -> {
 				try {
 					FlowType flowType = FlowType.valueOf(processSpec.getFlow());
@@ -805,7 +837,19 @@ public class PacketHandlerController extends BaseController implements Initializ
 					}
 					ProcessSpecDto processSpecDto = identitySchemaDao.getProcessSpec(processSpec.getId(), version);
 					GridPane gridPane = buildRegistrationProcessPane(processSpecDto);
-					registrationGridPane.addRow(i.getAndIncrement(), gridPane);
+
+					// Create a new GridPane wrapper
+					GridPane wrapperPane = new GridPane();
+					wrapperPane.add(gridPane, 0, 0);
+//					wrapperPane.setPadding(new Insets(5, 30, 5, 30));
+
+					// Add the wrapperPane to the correct cell in the grid
+					registrationGridPane.add(wrapperPane, columnCounter.getAndIncrement() % 4, i.get());
+
+					// Increment row index if necessary
+					if (columnCounter.get() % 4 == 0) {
+						i.getAndIncrement();
+					}
 				} catch (RegBaseCheckedException e) {
 					LOGGER.error("Failed to build process pane {}", processSpec, e);
 				}
@@ -816,13 +860,49 @@ public class PacketHandlerController extends BaseController implements Initializ
 	}
 
 	private void addParentRowConstraints(int size) {
-		registrationGridPane.getRowConstraints().clear();
-		for(int i=0;i<size;i++) {
-			RowConstraints rowConstraints = new RowConstraints();
-			rowConstraints.setPercentHeight((double)100/size);
-			registrationGridPane.getRowConstraints().add(rowConstraints);
+		registrationGridPane.getColumnConstraints().clear();
+		for (int i = 0; i < 4; i++) {
+			ColumnConstraints columnConstraints = new ColumnConstraints();
+			columnConstraints.setPercentWidth(100.0 / 4);
+			registrationGridPane.getColumnConstraints().add(columnConstraints);
 		}
 	}
+
+//	private void loadRegistrationProcesses()  {
+//		try {
+//			double version = identitySchemaDao.getLatestEffectiveSchemaVersion();
+//			List<ProcessSpec> processSpecs = identitySchemaDao.getAllActiveProcessSpecs(version);
+//			addParentRowConstraints(processSpecs == null ? 0 : processSpecs.size());
+//			AtomicInteger i = new AtomicInteger();
+//			Objects.requireNonNull(processSpecs).forEach(processSpec -> {
+//				try {
+//					FlowType flowType = FlowType.valueOf(processSpec.getFlow());
+//					if(flowType == null) {
+//						LOGGER.error("Invalid registration flow type {}", processSpec.getFlow());
+//						generateAlert(RegistrationConstants.ERROR,
+//								RegistrationUIConstants.getMessageLanguageSpecific(RegistrationUIConstants.INVALID_FLOW_TYPE));
+//						return;
+//					}
+//					ProcessSpecDto processSpecDto = identitySchemaDao.getProcessSpec(processSpec.getId(), version);
+//					GridPane gridPane = buildRegistrationProcessPane(processSpecDto);
+//					registrationGridPane.addRow(i.getAndIncrement(), gridPane);
+//				} catch (RegBaseCheckedException e) {
+//					LOGGER.error("Failed to build process pane {}", processSpec, e);
+//				}
+//			});
+//		} catch (RegBaseCheckedException e) {
+//			LOGGER.error("Failed to get configured processes", e);
+//		}
+//	}
+//
+//	private void addParentRowConstraints(int size) {
+//		registrationGridPane.getColumnConstraints().clear();
+//		for(int i=0;i<size;i++) {
+//			ColumnConstraints rowConstraints = new ColumnConstraints();
+//			rowConstraints.setPercentWidth((double)100/size);
+//			registrationGridPane.getColumnConstraints().add(rowConstraints);
+//		}
+//	}
 
 	private GridPane buildRegistrationProcessPane(ProcessSpecDto processSpecDto) {
 		GridPane gridPane = new GridPane();

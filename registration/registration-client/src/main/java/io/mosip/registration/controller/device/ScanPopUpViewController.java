@@ -217,17 +217,19 @@ public class ScanPopUpViewController extends BaseController implements Initializ
 			cancelBtn.setDisable(true);
 			previewOption.setVisible(false);
 
+			width=840;
+			
 			LOGGER.info("Setting doc screen width :{}, height: {}", width, height);
 			Scene scene = new Scene(scanPopup, width, height);
 			if (documentScanController.getScannedPages() != null
 					&& !documentScanController.getScannedPages().isEmpty()) {
 				initializeDocPages(1, documentScanController.getScannedPages().size());
-				previewBtn.setDisable(false);
+//				previewBtn.setDisable(false);
 			} else {
 				saveBtn.setDisable(true);
 				cropButton.setDisable(true);
 				cancelBtn.setDisable(true);
-				previewBtn.setDisable(true);
+//				previewBtn.setDisable(true);
 			}
 			scene.getStylesheets().add(ClassLoader.getSystemClassLoader().getResource(getCssName()).toExternalForm());
 			popupStage = new Stage();
@@ -256,6 +258,7 @@ public class ScanPopUpViewController extends BaseController implements Initializ
 
 			rectangleSelection = null;
 			clearSelection();
+			stream();
 			setScanImageViewZoomable();
 
 			LOGGER.info("Opening pop-up screen to scan for user registration");
@@ -291,7 +294,7 @@ public class ScanPopUpViewController extends BaseController implements Initializ
 	}
 
 
-	@FXML
+//	@FXML
 	public void preview() {
 		setWebCamStream(false);
 		clearSelection();
@@ -455,10 +458,10 @@ public class ScanPopUpViewController extends BaseController implements Initializ
 		}
 
 		if (!documentScanController.getScannedPages().isEmpty()) {
-			previewBtn.setDisable(false);
+//			previewBtn.setDisable(false);
 			saveBtn.setDisable(false);
 		} else {
-			previewBtn.setDisable(true);
+//			previewBtn.setDisable(true);
 			saveBtn.setDisable(true);
 			cancelBtn.setDisable(true);
 			cropButton.setDisable(true);
@@ -696,6 +699,6 @@ public class ScanPopUpViewController extends BaseController implements Initializ
 		streamBtn.setDisable(true);
 		cancelBtn.setDisable(true);
 		cropButton.setDisable(true);
-		previewBtn.setDisable(true);
+//		previewBtn.setDisable(true);
 	}
 }

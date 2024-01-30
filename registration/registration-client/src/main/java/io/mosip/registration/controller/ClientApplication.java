@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Map;
 import java.util.ResourceBundle;
 
+import org.opencv.core.Core;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
@@ -102,6 +103,7 @@ public class ClientApplication extends Application {
 
 			handleInitialSync();
 			discoverDevices();
+			System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
 		} catch (Throwable t) {
 			ClientPreLoader.errorsFound = true;

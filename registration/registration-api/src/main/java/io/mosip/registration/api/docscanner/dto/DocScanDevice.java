@@ -12,7 +12,7 @@ public class DocScanDevice {
     private String id;
     private String name;
     private DeviceType deviceType;
-
+    private int deviceIndex=0;
     private int dpi;
     //accepts 4 elements, x, y, width, height (in pixels)
     private int[] frame;

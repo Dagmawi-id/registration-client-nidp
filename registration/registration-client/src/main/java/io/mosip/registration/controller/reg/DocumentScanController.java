@@ -11,6 +11,7 @@ import javax.imageio.ImageIO;
 import io.mosip.registration.api.docscanner.DocScannerFacade;
 import io.mosip.registration.api.docscanner.DocScannerUtil;
 import io.mosip.registration.api.docscanner.dto.DocScanDevice;
+import io.mosip.registration.controller.device.DefaultDeviceDTO;
 import io.mosip.registration.util.control.FxControl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -187,6 +188,16 @@ public class DocumentScanController extends BaseController {
 			return;
 		}
 
+		DefaultDeviceDTO devDto=DefaultDeviceDTO.loadDefaultDevice();
+
+		if (devDto!=null){
+			for(DocScanDevice dv:devices){
+				if(devDto.documentScanner.equalsIgnoreCase(dv.getName())){
+					selectedScanDeviceName=dv.getId();
+				}
+			}
+		}
+
 		selectedScanDeviceName = selectedScanDeviceName == null ? devices.get(0).getId() : selectedScanDeviceName;
 		Optional<DocScanDevice> result = devices.stream().filter(d -> d.getId().equals(selectedScanDeviceName)).findFirst();
 		LOGGER.info("Selected device name : {}", selectedScanDeviceName);
@@ -268,6 +279,8 @@ public class DocumentScanController extends BaseController {
 
 	public void setSelectedScanDeviceName(String selectedScanDeviceName) {
 		this.selectedScanDeviceName = selectedScanDeviceName;
+
+
 	}
 
 	public FxControl getFxControl() {

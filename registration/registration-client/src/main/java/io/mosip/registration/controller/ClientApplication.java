@@ -102,7 +102,7 @@ public class ClientApplication extends Application {
 					io.mosip.registration.context.ApplicationContext.getStringValueFromApplicationMap(RegistrationConstants.MOSIP_UPGRADE_SERVER_URL)));
 
 			handleInitialSync();
-			discoverDevices();
+//			discoverDevices();
 			System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 
 		} catch (Throwable t) {

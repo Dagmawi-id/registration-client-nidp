@@ -68,8 +68,6 @@ public class DOBAgeFxControl extends FxControl {
 		this.uiFieldDTO = uiFieldDTO;
 		this.fieldID = uiFieldDTO.getId();
 
-
-
 		this.control = this;
 		VBox appLangDateVBox = create(uiFieldDTO);
 		HBox hBox = new HBox();

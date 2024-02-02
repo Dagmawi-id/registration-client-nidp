@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 
+import io.mosip.registration.controller.device.DefaultDeviceDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -73,6 +74,8 @@ public class DeviceSettingsController extends BaseController implements Settings
 
 	@FXML
 	private Button submit;
+	@FXML
+	private Button saveDefault;
 
 	@FXML
 	private StackPane progressIndicatorPane;
@@ -186,6 +189,7 @@ public class DeviceSettingsController extends BaseController implements Settings
 			LOGGER.error("Exception in searching for device", exception);
 		}
 	}
+
 
 	public void modifyPortRange() {
 		if (validatePort(fromPort.getText()) && validatePort(toPort.getText())
@@ -464,10 +468,12 @@ public class DeviceSettingsController extends BaseController implements Settings
 		}
 		return null;
 	}
-
+	boolean itemChanged=true;
+	ComboBox<ScanDeviceInfo> loadedDevices=null;
 	private void addScannerDetails(VBox deviceDetailsVbox, List<DocScanDevice> scannerDevices) {
 		if (scannerDevices.size() > 1) {
 			ComboBox<ScanDeviceInfo> comboBox = new ComboBox<>();
+			loadedDevices=comboBox;
 			comboBox.getStyleClass().add("deviceDetailsComboBox");
 
 			for (DocScanDevice device : scannerDevices) {
@@ -476,6 +482,8 @@ public class DeviceSettingsController extends BaseController implements Settings
 			comboBox.getSelectionModel().select(getSelectedScanDevice(scannerDevices));
 			// Create our custom cells for the ComboBox
 			comboBox.setCellFactory(param -> new ListCell<ScanDeviceInfo>() {
+
+
 				@Override
 				protected void updateItem(ScanDeviceInfo item, boolean empty) {
 					super.updateItem(item, empty);
@@ -504,8 +512,30 @@ public class DeviceSettingsController extends BaseController implements Settings
 		}
 	}
 
+	public void saveDefaultDevices() {
+		DefaultDeviceDTO dvDto = DefaultDeviceDTO.loadDefaultDevice();
+		if (loadedDevices != null ) {
+			ScanDeviceInfo selected= loadedDevices.getSelectionModel().getSelectedItem();
+			if(selected!=null) {
+				dvDto.documentScanner = selected.getName();
+				DefaultDeviceDTO.saveDefaultDevice(dvDto);
+			}
+		}
+
+	}
 	private ScanDeviceInfo getSelectedScanDevice(List<DocScanDevice> scannerDevices) {
-		String selectedScanDevice = documentScanController.getSelectedScanDeviceName();
+		String devName="";
+		DefaultDeviceDTO devDto=DefaultDeviceDTO.loadDefaultDevice();
+		if (devDto!=null){
+			for(DocScanDevice dv:scannerDevices){
+				if(devDto.documentScanner.equalsIgnoreCase(dv.getName())){
+					devName=dv.getId();
+					break;
+				}
+			}
+		}
+		String selectedScanDevice = devName;//documentScanController.getSelectedScanDeviceName();
+
 		if (selectedScanDevice != null && !selectedScanDevice.isBlank()) {
 			Optional<DocScanDevice> docScanDevice = scannerDevices.stream().filter(device -> device.getId().equalsIgnoreCase(selectedScanDevice)).findFirst();
 			if (docScanDevice.isPresent()) 

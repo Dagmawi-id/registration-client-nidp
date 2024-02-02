@@ -60,6 +60,7 @@
                               <Label styleClass="settingsLabelStyle" text="-" />
                               <TextField fx:id="toPort" promptText="%toPort" styleClass="deviceSettingsTextFieldStyle" />
                               <Button fx:id="submit" mnemonicParsing="false" onAction="#modifyPortRange" styleClass="contiuneButton" text="%submit" visible="false" />
+                              <Button fx:id="saveDefault" mnemonicParsing="false" onAction="#saveDefaultDevices" styleClass="contiuneButton" text="Save Default" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1">

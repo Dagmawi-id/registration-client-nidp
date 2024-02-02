@@ -1877,22 +1877,25 @@ Working on new Css by taleev
 /*Acknowledgement page design ends */
 
 /*Header page design starts here*/
-.headerParentBorder {
-	-fx-border-color: #F4F4F4;
-	-fx-border-width: 1.0 1.0 0.0 1.0;
-	-fx-text-fill: white;
-	-fx-background-color: #0B6A82
+.registrationOfficerIdPane {
+	-fx-background-radius: 6.0, 6.0, 6.0, 6.0;
+	-fx-background-color: #d2d2d2;
+	-fx-border-radius:  6.0, 6.0, 6.0, 6.0;
+	-fx-border-color: white;
 }
 
-.headerDetails {
-	-fx-background-color: #175768;
+.headerDetails .label {
+	/*-fx-background-color: white;*/
+	-fx-text-fill: white;
+	-fx-font-family: "Noto Sans Ethiopic","Noto Sans", sans-serif;
+	-fx-font-size: 14.0px;
 }
 
 .registrationOfficerIdPane {
-	-fx-background-radius: 21.0, 21.0, 21.0, 21.0;
-	-fx-background-color: #F57E20;
-	-fx-border-radius: 21.0, 21.0, 21.0, 21.0;
-	-fx-border-color: #61AB01;
+	-fx-background-radius: 6.0, 6.0, 6.0, 6.0;
+	-fx-background-color: #d2d2d2;
+	-fx-border-radius:  6.0, 6.0, 6.0, 6.0;
+	-fx-border-color: white;
 }
 
 .internetModePane {
@@ -1910,11 +1913,11 @@ Working on new Css by taleev
 }
 
 .menuBar {
-	-fx-background-color: #0B6A82
+	-fx-background-color: transparent;
+	-fx-background-radius: 5;
 }
-
 .headerDetails .label {
-	-fx-text-fill: white;
+	-fx-text-fill: rgb(10, 56, 79);
 	-fx-font-family: Roboto;
 	-fx-font-size: 14.0px;
 }

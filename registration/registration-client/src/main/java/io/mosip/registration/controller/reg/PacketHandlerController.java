@@ -17,6 +17,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import javafx.geometry.Insets;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -837,16 +838,16 @@ public class PacketHandlerController extends BaseController implements Initializ
 					}
 					ProcessSpecDto processSpecDto = identitySchemaDao.getProcessSpec(processSpec.getId(), version);
 					GridPane gridPane = buildRegistrationProcessPane(processSpecDto);
+					gridPane.getStyleClass().add("modernButtonReg");
 
-					// Create a new GridPane wrapper
+
 					GridPane wrapperPane = new GridPane();
 					wrapperPane.add(gridPane, 0, 0);
-//					wrapperPane.setPadding(new Insets(5, 30, 5, 30));
+					wrapperPane.setPadding(new Insets(12, 0, 12, 0));
+//					wrapperPane.setHgap(10);
 
-					// Add the wrapperPane to the correct cell in the grid
 					registrationGridPane.add(wrapperPane, columnCounter.getAndIncrement() % 4, i.get());
 
-					// Increment row index if necessary
 					if (columnCounter.get() % 4 == 0) {
 						i.getAndIncrement();
 					}
@@ -861,6 +862,8 @@ public class PacketHandlerController extends BaseController implements Initializ
 
 	private void addParentRowConstraints(int size) {
 		registrationGridPane.getColumnConstraints().clear();
+
+
 		for (int i = 0; i < 4; i++) {
 			ColumnConstraints columnConstraints = new ColumnConstraints();
 			columnConstraints.setPercentWidth(100.0 / 4);
@@ -906,15 +909,15 @@ public class PacketHandlerController extends BaseController implements Initializ
 
 	private GridPane buildRegistrationProcessPane(ProcessSpecDto processSpecDto) {
 		GridPane gridPane = new GridPane();
-		gridPane.getStyleClass().add("operationalPaneDetailsSync");
+		gridPane.getStyleClass().add("modernButtonReg");
 		gridPane.setId(processSpecDto.getId());
 		RowConstraints rowConstraints = new RowConstraints();
 		rowConstraints.setPercentHeight(100);
 		gridPane.getRowConstraints().addAll(rowConstraints);
 		ColumnConstraints columnConstraint1 = new ColumnConstraints();
-		columnConstraint1.setPercentWidth(10);
+		columnConstraint1.setPercentWidth(30);
 		ColumnConstraints columnConstraint2 = new ColumnConstraints();
-		columnConstraint2.setPercentWidth(90);
+		columnConstraint2.setPercentWidth(70);
 		gridPane.getColumnConstraints().addAll(columnConstraint1, columnConstraint2);
 		gridPane.setOnMouseClicked(event -> {
 			selectLanguage(event);
@@ -927,8 +930,8 @@ public class PacketHandlerController extends BaseController implements Initializ
 		imageView.setId(processSpecDto.getId()+"_img");
 		imageView.setPreserveRatio(true);
 		imageView.setPickOnBounds(true);
-		imageView.setFitHeight(30);
-		imageView.setFitWidth(30);
+		imageView.setFitHeight(40);
+		imageView.setFitWidth(40);
 		try {
 			imageView.setImage(getImage(processSpecDto.getIcon(), true));
 		} catch (RegBaseCheckedException e) {
@@ -945,7 +948,8 @@ public class PacketHandlerController extends BaseController implements Initializ
 		changeNodeOrientation(gridPane);
 		return gridPane;
 	}
-	
+
+
 	public void selectLanguage(MouseEvent event) {
 		if (!proceedOnRegistrationAction())
 			return;

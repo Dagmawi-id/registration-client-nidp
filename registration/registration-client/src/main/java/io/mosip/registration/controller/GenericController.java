@@ -973,4 +973,8 @@ public class GenericController extends BaseController {
 		TabPane tabPane = (TabPane) anchorPane.lookup(HASH + getRegistrationDTOFromSession().getRegistrationId());
 		return tabPane.getSelectionModel().getSelectedItem().getId().replace("_tab", EMPTY);
 	}
+
+    public void previous(ActionEvent actionEvent) {
+
+    }
 }

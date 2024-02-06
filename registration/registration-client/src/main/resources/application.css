@@ -852,7 +852,7 @@ Working on new Css by taleev
 }
 
 .paneAtDisplayDemoGraphic {
-	-fx-background-color: #FFFFFF;
+	-fx-background-color:  rgb(10, 56, 79,0.1);
 }
 
 .documentContentButton {
@@ -882,22 +882,29 @@ Working on new Css by taleev
 }
 
 .contiuneButton {
-	-fx-background-color: #005baa;
-	-fx-border-width: 1.0 1.0 1.0 1.0;
-	-fx-border-color: #005baa;
+	-fx-background-color:#034B64;
+	-fx-border-width: 0.3;
+	-fx-background-radius: 5;
+	-fx-border-color: #47F4C7;
 	-fx-text-fill: #FFFFFF;
-	-fx-border-radius: 3.0, 3.0, 3.0, 3.0;
+	-fx-border-radius: 5;
 	-fx-font-size: 1.2em;
 }
 
 .contiuneButton:hover {
-	-fx-background-color: #004887;
-	-fx-border-color: #004887;
+	-fx-background-color:#47F4C7;
+	-fx-border-radius: 5;
+	-fx-background-radius: 5;
+	-fx-border-color: #76b5d4;
+	-fx-text-fill: #09384f;
+
 }
 
 .contiuneButton:pressed {
-	-fx-background-color: #004887;
-	-fx-border-color: #004887;
+	-fx-background-color:#47f4c7;
+	-fx-border-color: #034B64;
+	-fx-border-radius: 5;
+	-fx-background-radius: 5;
 }
 
 .contiuneButton:disabled {
@@ -909,10 +916,10 @@ Working on new Css by taleev
 .backButton {
 	-fx-background-color: #FFFFFF;
 	-fx-border-width: 1.0 1.0 1.0 1.0;
-	-fx-border-color: #005baa;
-	-fx-border-radius: 3.0, 3.0, 3.0, 3.0;
-	-fx-font-size: 1.2em;
-	-fx-border-radius: 3.0, 3.0, 3.0, 3.0;
+	-fx-border-color: #034B64;
+	-fx-font-size: 1.4em;
+	-fx-border-radius: 5;
+	-fx-background-radius: 5;
 }
 
 .backButton:hover {
@@ -1890,9 +1897,10 @@ Working on new Css by taleev
 /*Header page design starts here*/
 .registrationOfficerIdPane {
 	-fx-background-radius: 6.0, 6.0, 6.0, 6.0;
-	-fx-background-color: #d2d2d2;
+	-fx-background-color: rgb(14, 83, 117);
 	-fx-border-radius:  6.0, 6.0, 6.0, 6.0;
 	-fx-border-color: white;
+	-fx-border-width: 0.2;
 }
 
 .headerDetails .label {
@@ -1902,12 +1910,7 @@ Working on new Css by taleev
 	-fx-font-size: 14.0px;
 }
 
-.registrationOfficerIdPane {
-	-fx-background-radius: 6.0, 6.0, 6.0, 6.0;
-	-fx-background-color: #d2d2d2;
-	-fx-border-radius:  6.0, 6.0, 6.0, 6.0;
-	-fx-border-color: white;
-}
+
 
 .internetModePane {
 	-fx-border-radius: 25 25 25 25;
@@ -1998,7 +2001,7 @@ Working on new Css by taleev
 
 /* Home page design starts here */
 .homeContent {
-	-fx-background-image: url(images/edited_backround.jpg);
+	/*-fx-background-image: url(images/edited_backround.jpg);*/
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: cover;
 	-fx-background-position: top;
@@ -2025,7 +2028,7 @@ Working on new Css by taleev
 }
 
 .RegOptionsHeader{
-	-fx-background-color: rgb(9, 56, 79,0.6);
+	-fx-background-color: rgb(10, 56, 79,1);
 }
 .uinUpdateStyle {
 	-fx-background-radius: 4.0, 4.0, 4.0, 4.0;
@@ -2155,6 +2158,26 @@ Working on new Css by taleev
 	-fx-font-size: 11.0px;
 	-fx-text-fill: #005baa;
 	-fx-pref-width: 90.0px;
+}
+
+.demographicBgHolder{
+	-fx-background-image: url(images/edited_backround.jpg);
+	-fx-background-repeat: no-repeat;
+	-fx-background-size: cover;
+	-fx-background-position: top;
+
+	/*-fx-border-color: #F4F4F4;*/
+	-fx-border-width: 0.0 1.0 1.0 1.0;
+}
+
+.headerParentBorder {
+	/*-fx-border-color: #034B64;*/
+	/*-fx-border-width: 1.0 1.0 0.0 1.0;*/
+	-fx-text-fill: white;
+	/*-fx-background-image: url(images/bgleaf.jpg);*/
+
+	-fx-background-color:  rgb(10, 56, 79);
+
 }
 
 .syncJobButton {

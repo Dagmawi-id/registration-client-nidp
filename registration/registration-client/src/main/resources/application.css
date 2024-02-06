@@ -3,6 +3,17 @@
 	-fx-font-size: 14.0px;
 }
 
+.button-style {
+	-fx-background-color: #0a384f;
+	-fx-text-fill: white;
+	-fx-font-size: 16px;
+	-fx-pref-width: 120px;
+	-fx-pref-height: 40px;
+}
+
+.button-style:hover {
+	-fx-background-color: #47f4c7;
+}
 .table-cell:editable {
 	-fx-font-weight: bold;
     -fx-tex-fill: green;
@@ -1987,7 +1998,7 @@ Working on new Css by taleev
 
 /* Home page design starts here */
 .homeContent {
-	/*-fx-background-image: url(images/edited_backround.jpg);*/
+	-fx-background-image: url(images/edited_backround.jpg);
 	-fx-background-repeat: no-repeat;
 	-fx-background-size: cover;
 	-fx-background-position: top;

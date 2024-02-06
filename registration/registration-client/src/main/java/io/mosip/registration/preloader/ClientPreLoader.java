@@ -6,13 +6,18 @@ import io.mosip.registration.update.ClientSetupValidator;
 import javafx.application.Preloader;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.slf4j.Logger;
@@ -30,28 +35,84 @@ public class ClientPreLoader extends Preloader {
     private Label label = new Label("Starting Registration Client : Please wait...");
     private Button stopClient = new Button("Stop Client");
     private Button hidePreLoader = new Button("Exit");
+    private Image logoImage;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        Font.loadFont(getClass().getResource("/NotoSans-Regular.ttf").toExternalForm(), 12);
+        Font.loadFont(getClass().getResource("/NotoSansEthiopic-Regular.ttf").toExternalForm(), 12);
+
         this.preloaderStage = primaryStage;
 
+        Image logoImage = new Image(getClass().getResource(RegistrationConstants.LOGO).toExternalForm());
+        ImageView logoView = new ImageView(logoImage);
+        logoView.setFitHeight(60);
+        logoView.setFitWidth(60);
+
+        String buttonStyle =
+                "-fx-font-size: 16px; " +
+                "-fx-pref-width: 100px; " +
+                "-fx-pref-height: 40px; ";
+        stopClient.setStyle(buttonStyle );
+        hidePreLoader.setStyle(buttonStyle);
+
+        Label titleLabel = new Label("Ethiopian National ID - Registration System");
+        titleLabel.setFont(new Font("Noto Sans", 15));
+        titleLabel.setStyle("-fx-text-fill: white;");
+
+        Label secondaryTitleLabel = new Label("የኢትዮጵያ ብሔራዊ መታወቂያ - የምዝገባ ስርዓት");
+        secondaryTitleLabel.setFont(new Font("Noto Sans Ethiopic", 15));
+        secondaryTitleLabel.setStyle("-fx-text-fill: white;");
+
+        VBox titleBox = new VBox( titleLabel, secondaryTitleLabel);
+        titleBox.setAlignment(Pos.CENTER_LEFT);
+        titleBox.setSpacing(0);
+        HBox header = new HBox(10, logoView, titleBox);
+        header.setAlignment(Pos.CENTER);
+        header.setStyle("-fx-background-color:#0a384f; -fx-background-radius: 10 10 0 0; -fx-text-fill: white; -fx-padding: 10,0,0,10");
+        header.prefWidthProperty().bind(primaryStage.widthProperty()); // **Ensures header stretches full width**
+
         VBox loading = new VBox(20);
-        loading.setMaxWidth(Region.USE_PREF_SIZE);
-        loading.setMaxHeight(Region.USE_PREF_SIZE);
-        loading.getChildren().add(label);
-        loading.getChildren().add(progressBar);
-        loading.getChildren().add(textArea);
+        VBox loadingHolder = new VBox();
+        // **Below line ensures VBox (loading) takes the maximum available width for alignment, but won't affect the header stretching**
+        loading.setFillWidth(true);
+        loading.getChildren().add(header); // Header is added first to stretch across the top
+        // **For each component below, apply padding individually if needed**
+
+        loadingHolder.setAlignment(Pos.CENTER);
+
+        label.setStyle("-fx-font-size: 18;-fx-text-fill:#0a384f; ");
+        loadingHolder.getChildren().add(label);
+
+        progressBar.setStyle("-fx-pref-width: 400; -fx-pref-height: 40; " +
+                "-fx-accent: #0a384f; " +
+                "-fx-control-inner-background: #e0e0e0; " +
+                "-fx-padding: 2;");
+        loadingHolder.getChildren().add(progressBar);
+        loadingHolder.getChildren().add(textArea);
+
+        loading.getChildren().add(loadingHolder);
+
+        VBox.setMargin(textArea, new Insets(20, 30, 10, 30));
+
         textArea.setPrefWidth(500);
         textArea.setPrefHeight(300);
+        textArea.setStyle("-fx-background-color:white;-fx-padding: 10; -fx-background-radius: 5;");
 
-        Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
+        HBox buttons = new HBox(20);
+        buttons.setAlignment(Pos.CENTER);
 
-        HBox buttons = new HBox();
-        buttons.getChildren().add(hidePreLoader);
-        buttons.getChildren().add(spacer);
-        buttons.getChildren().add(stopClient);
+        buttons.getChildren().addAll(hidePreLoader, stopClient);
         loading.getChildren().add(buttons);
+
+//
+//        hidePreLoader.setOnMouseEntered(e -> hidePreLoader.setStyle(buttonStyle + "-fx-background-color:#0a384f"));
+//        hidePreLoader.setOnMouseExited(e -> hidePreLoader.setStyle(buttonStyle + "-fx-background-color:white"));
+//
+//        stopClient.setOnMouseEntered(e -> stopClient.setStyle(buttonStyle + "-fx-background-color:#0a384f"));
+//        stopClient.setOnMouseExited(e -> stopClient.setStyle(buttonStyle + "-fx-background-color:white"));
+
+
 
         stopClient.setVisible(false);
         stopClient.setOnAction(new EventHandler<ActionEvent>() {
@@ -70,14 +131,18 @@ public class ClientPreLoader extends Preloader {
             }
         });
 
+
         BorderPane root = new BorderPane(loading);
+        root.setStyle("-fx-background-color:white; -fx-background-radius: 10;");
         Scene scene = new Scene(root);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
+//        primaryStage.initStyle(StageStyle.UNDECORATED);
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setWidth(800);
         primaryStage.setHeight(600);
         primaryStage.setResizable(true);
         primaryStage.setTitle("Client Pre-Loader");
         primaryStage.setScene(scene);
+        scene.setFill(Color.TRANSPARENT);
         primaryStage.getIcons().add(new Image(getClass().getResource(RegistrationConstants.LOGO).toExternalForm()));
         primaryStage.show();
     }

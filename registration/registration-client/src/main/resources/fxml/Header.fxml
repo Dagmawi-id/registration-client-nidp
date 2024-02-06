@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 
-<GridPane fx:id="headerParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1000.0" styleClass="headerParentBorder" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.mosip.registration.controller.reg.HeaderController">
+<GridPane fx:id="headerParent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="78.0" prefWidth="1310.0" styleClass="headerParentBorder" stylesheets="@../application.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.mosip.registration.controller.reg.HeaderController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="102.0" minWidth="10.0" percentWidth="6.0" prefWidth="30.0" />
         <ColumnConstraints hgrow="SOMETIMES" maxWidth="171.0" minWidth="10.0" percentWidth="3.0" prefWidth="157.0" />
@@ -25,10 +25,11 @@
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="10.0" prefWidth="100.0" />
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" percentHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" percentHeight="60.0" prefHeight="30.0" vgrow="SOMETIMES" />
     </rowConstraints>
     <children>
-      <BorderPane prefWidth="77.0" GridPane.halignment="CENTER">
+      <BorderPane prefWidth="77.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets left="22.0" />
          </GridPane.margin>
@@ -40,7 +41,7 @@
               </ImageView>
          </center>
       </BorderPane>
-        <GridPane styleClass="headerDetails" stylesheets="@../application.css" GridPane.columnIndex="3">
+        <GridPane styleClass="headerDetails" stylesheets="@../application.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="26.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="2.0" prefWidth="100.0" />
@@ -69,7 +70,7 @@
                                 <Insets left="5.0" />
                             </GridPane.margin>
                             <center>
-                                <Label fx:id="registrationOfficerName" graphicTextGap="10.0" prefHeight="45.0" prefWidth="247.0" text="%roname">
+                                <Label fx:id="registrationOfficerName" graphicTextGap="10.0" prefHeight="45.0" prefWidth="247.0" style="-fx-text-fill: white; -fx-font-size: 16;" text="%roname" textFill="WHITE">
                                     <graphic>
                                         <ImageView fx:id="userImageView" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -90,7 +91,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label fx:id="registrationOfficeLocation" graphicTextGap="10.0" text="%rooffice" GridPane.halignment="LEFT">
+                        <Label fx:id="registrationOfficeLocation" graphicTextGap="10.0" style="-fx-text-fill: white; -fx-font-size: 16;" text="%rooffice" textFill="WHITE" GridPane.halignment="LEFT">
                             <graphic>
                                 <ImageView fx:id="regCenterLocationImgView" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
@@ -109,7 +110,7 @@
                         <RowConstraints percentHeight="100.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label fx:id="registrationOfficeId" graphicTextGap="10.0" text="%roid" GridPane.halignment="LEFT">
+                        <Label fx:id="registrationOfficeId" graphicTextGap="10.0" style="-fx-text-fill: white; -fx-font-size: 16;" text="%roid" textFill="WHITE" GridPane.halignment="LEFT">
                             <GridPane.margin>
                                 <Insets left="10.0" />
                             </GridPane.margin>
@@ -118,7 +119,7 @@
                                     <children>
                                         <ImageView fx:id="registrationOfficeIdImageView" fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true" visible="false">
                                             <image>
-                                                <Image url="@../images/system.png" />
+                                                <Image url="@../images/Offline.png" />
                                             </image>
                                         </ImageView>
                                         <HBox fx:id="online" alignment="CENTER" prefHeight="254.0" prefWidth="34.0">
@@ -195,6 +196,60 @@
                     <children>
                         <MenuBar prefHeight="38.0" prefWidth="117.0" style="-fx-background-color: transparent;" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                             <menus>
+                        <Menu fx:id="exceptionFaceDeviceMenu1" mnemonicParsing="false">
+                           <graphic>
+                              <StackPane fx:id="exceptionFaceDevice1" styleClass="deviceRefresh" stylesheets="@../application.css">
+                                 <children>
+                                    <ImageView fx:id="exceptionFaceDeviceOnline1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/eyeDevice.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="exceptionFaceDeviceOffline1" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/eyeDeviceOffline.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </StackPane>
+                           </graphic>
+                        </Menu>
+                        <Menu fx:id="exceptionFaceDeviceMenu2" mnemonicParsing="false">
+                           <graphic>
+                              <StackPane fx:id="exceptionFaceDevice2" styleClass="deviceRefresh" stylesheets="@../application.css">
+                                 <children>
+                                    <ImageView fx:id="exceptionFaceDeviceOnline2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/FingerprintDevice.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="exceptionFaceDeviceOffline2" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/fingerPrintDeviceOffline.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </StackPane>
+                           </graphic>
+                        </Menu>
+                        <Menu fx:id="exceptionFaceDeviceMenu3" mnemonicParsing="false">
+                           <graphic>
+                              <StackPane fx:id="exceptionFaceDevice3" styleClass="deviceRefresh" stylesheets="@../application.css">
+                                 <children>
+                                    <ImageView fx:id="exceptionFaceDeviceOnline3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/FaceDevice.PNG" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fx:id="exceptionFaceDeviceOffline3" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/faceDeviceOffline.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </StackPane>
+                           </graphic>
+                        </Menu>
 <!--                                <Menu mnemonicParsing="false">-->
 <!--                                    <items>-->
 <!--                                        <MenuItem id="deviceReScanRequest" fx:id="deviceReScanRequest11" mnemonicParsing="false" onAction="#reScanDevice" styleClass="deviceMenu" text="Rescan" />-->
@@ -245,7 +300,7 @@
                 </GridPane>
             </children>
         </GridPane>
-        <GridPane GridPane.columnIndex="4">
+        <GridPane GridPane.columnIndex="4" GridPane.rowIndex="1">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" percentWidth="2.0" />
                 <ColumnConstraints hgrow="SOMETIMES" percentWidth="5.0" />
@@ -294,7 +349,7 @@
                 <Insets />
             </GridPane.margin>
         </GridPane>
-        <ImageView fx:id="homeImgView" fitHeight="23.0" fitWidth="37.0" onMousePressed="#redirectHome" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+        <ImageView fx:id="homeImgView" fitHeight="23.0" fitWidth="37.0" onMousePressed="#redirectHome" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
             <image>
                 <Image url="@../images/Home-small.png" />
             </image>
